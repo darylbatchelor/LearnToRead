@@ -23,10 +23,10 @@
 
 
 
-      <a-image id="santa" src="santa.png" position=" -15 -3 -3" width="2" height="2" rotation=" 0 100 0" sound="src: hohoho.wav; on: click"> </a-image>
-      <a-image id="santa2" src="santa.png" position=" 15 -2 -3" width="2" height="2" rotation=" 0 100 0" sound="src: hohoho.wav; on: click"> </a-image>
-      <a-image id="santa3" src="santa.png" position=" 4 -4 -10" width="2" height="2" rotation=" 0 160 0" sound="src: hohoho.wav; on: click"> </a-image>
-      <a-image id="santa4" src="santa.png" position=" 7 8 1" width="2" height="2" rotation=" -10 110 0" sound="src: hohoho.wav; on: click"> </a-image>
+      <a-image class="santa" src="santa.png" position=" -15 -3 -3" width="2" height="2" rotation=" 0 100 0" sound="src: hohoho.wav; on: click"> </a-image>
+      <a-image class="santa" src="santa.png" position=" 15 -2 -3" width="2" height="2" rotation=" 0 100 0" sound="src: hohoho.wav; on: click"> </a-image>
+      <a-image class="santa" src="santa.png" position=" 4 -4 -10" width="2" height="2" rotation=" 0 160 0" sound="src: hohoho.wav; on: click"> </a-image>
+      <a-image class="santa" src="santa.png" position=" 7 8 1" width="2" height="2" rotation=" -10 110 0" sound="src: hohoho.wav; on: click"> </a-image>
 
 
       <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
@@ -36,55 +36,19 @@
 
     </a-scene>
 <script>
-var santa = document.querySelector('#santa');
-var santa2 = document.querySelector('#santa2');
-var santa3 = document.querySelector('#santa3');
-var santa4 = document.querySelector('#santa4');
+var santas = document.querySelectorAll('.santa');
 var santacounter = 0;
+var totalSantas = santas.length;
 
-santa.addEventListener('click', function() {
-console.log("santa clicked");
-  this.setAttribute('visible', 'false');
-  santacounter ++;
-  console.log(santacounter);
-  if (santacounter == 4) {
-    pano.setAttribute('src', 'merrychristmas.jpg');
-  }
+for (var i = 0; i < totalSantas; i++) {
+  santas[i].addEventListener('click', function() {
+      console.log("santa clicked");
+      this.setAttribute('visible', 'false');
+      santacounter ++;
+      if (santacounter == totalSantas) {pano.setAttribute('src', 'merrychristmas.jpg')};
 });
+};
 
-santa2.addEventListener('click', function() {
-console.log("santa clicked");
-  this.setAttribute('visible', 'false');
-  santacounter ++;
-  console.log(santacounter);
-  if (santacounter == 4) {
-    pano.setAttribute('src', 'merrychristmas.jpg');
-  }
-});
-
-santa3.addEventListener('click', function() {
-console.log("santa clicked");
-  this.setAttribute('visible', 'false');
-  santacounter ++;
-  console.log(santacounter);
-  if (santacounter == 4) {
-    pano.setAttribute('src', 'merrychristmas.jpg');
-  }
-});
-
-santa4.addEventListener('click', function() {
-console.log("santa clicked");
-  this.setAttribute('visible', 'false');
-  santacounter ++;
-  console.log(santacounter);
-  if (santacounter == 4) {
-    pano.setAttribute('src', 'merrychristmas.jpg');
-  }
-});
-
-if (santacounter == 4) {
-  pano.setAttribute('src', 'merrychristmas.jpg');
-}
 
 
 </script>
