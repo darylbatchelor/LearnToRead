@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Play Room</title>
+    <title>Play Room - A for Ant</title>
     <meta name="description" content="PlayRoom">
     <script src="https://aframe.io/aframe/dist/aframe.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -10,10 +10,10 @@
   </head>
   <body>
     <a-scene>
-      <a-entity camera id="camera" look-controls="enabled: true" wasd-controls="enabled: true">
+      <a-entity camera id="camera" look-controls="enabled: true" wasd-controls="enabled: false">
         <a-entity cursor="fuse: true; maxDistance: 500; timeout: 500"
-                  position="0 0 -20"
-                  scale=".5 .5 .5"
+                  position="0 0 -49"
+                  scale="1 1 1"
                   geometry="primitive: ring"
                   material="color: white; shader: flat">
         </a-entity>
@@ -21,21 +21,35 @@
 
       <a-sky id="pano" src="room.jpg" radius="50" color="#fff" rotation="0 -45 0"></a-sky>
 
-      <a-entity position = "0 4 -5">
-        <a-image class="letterA0" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5" > </a-image>
-        <a-image class="ant0" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5"  visible="false" > </a-image>
+      <a-entity position = "-15 0 -25" rotation=" 0 60 0">
+        <a-image class="letterA0 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5" > </a-image>
+        <a-image class="ant0" src="ant.png" position=" 0 0 0" width="10" height="10" rotation=" 2 0 -5"  visible="false" > </a-image>
       </a-entity>
 
-      <a-entity position = "3 0 -5">
-        <a-image class="letterA1" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+      <a-entity position = "-20 -5 -5" rotation=" -20 90 0">
+        <a-image class="letterA1 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
         <a-image class="ant1" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
       </a-entity>
 
-      <a-entity position = "-3 2 -5">
-        <a-image class="letterA2" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+      <a-entity position = "20 2 -5" rotation=" 0 -90 0">
+        <a-image class="letterA2 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
         <a-image class="ant2" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
       </a-entity>
 
+      <a-entity position = "0 20 -5" rotation=" 50 0 0">
+        <a-image class="letterA3 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+        <a-image class="ant3" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
+      </a-entity>
+
+      <a-entity position = "-25 -15 30" rotation=" 0 120 0">
+        <a-image class="letterA4 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+        <a-image class="ant4" src="ant.png" position=" 0 0 0" width="10" height="10" rotation=" 2 0 -5" visible="false" > </a-image>
+      </a-entity>
+
+      <a-entity position = "15 8 25" rotation=" 0 180 0">
+        <a-image class="letterA5 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+        <a-image class="ant5" src="ant.png" position=" 0 0 0" width="10" height="10" rotation=" 2 0 -5" visible="false" > </a-image>
+      </a-entity>
 
 
       <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
@@ -47,16 +61,18 @@
 
 
 <script>
+
+var totalAs = document.querySelectorAll('a-image.letter').length;
+var Aaudio = new Audio('aForAnt.wav');
+var i = 0;
+var Acounter = 0;
+
+
+/*
 var letterAs = document.querySelectorAll('a-image.letterA');
 var ants= document.querySelectorAll('a-image.ant');
-var totalAs = 10;
-var Aaudio = new Audio('aForAnt.wav');
 
-
-
-
-var i = 0
-/*if ( i < totalAs)  {
+if ( i < totalAs)  {
 
   letterAs[i].addEventListener('click', function() {
       this.setAttribute('visible', 'false');
@@ -77,57 +93,75 @@ var i = 0
 if ( i < totalAs)  {
 
   document.querySelector('a-image.letterA0').addEventListener('click', function() {
+
       this.setAttribute('visible', 'false');
       this.setAttribute('position', '-1000 0 0');
       Aaudio.play();
-      console.log(i);
       document.querySelector('a-image.ant0').setAttribute('visible', 'true');
       i++;
-      console.log(i);
-
-
-
-
-    //  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
-});
-};
+      Acounter ++;
+if (Acounter == totalAs) {pano.setAttribute('src', '')};
+    });
+  };
 
 if ( i < totalAs)  {
-
   document.querySelector('a-image.letterA1').addEventListener('click', function() {
       this.setAttribute('visible', 'false');
       this.setAttribute('position', '-1000 0 0');
       Aaudio.play();
-      console.log(i);
       document.querySelector('a-image.ant1').setAttribute('visible', 'true');
       i++;
-      console.log(i);
-
-
-
-
-    //  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
-});
+      Acounter ++;
+    if (Acounter == totalAs) {pano.setAttribute('src', '')};
+    });
 };
 
 if ( i < totalAs)  {
-
   document.querySelector('a-image.letterA2').addEventListener('click', function() {
       this.setAttribute('visible', 'false');
       this.setAttribute('position', '-1000 0 0');
       Aaudio.play();
-      console.log(i);
       document.querySelector('a-image.ant2').setAttribute('visible', 'true');
       i++;
-      console.log(i);
+      Acounter ++;
+if (Acounter == totalAs) {pano.setAttribute('src', '')};    });
+  };
 
+if ( i < totalAs)  {
+  document.querySelector('a-image.letterA3').addEventListener('click', function() {
+      this.setAttribute('visible', 'false');
+      this.setAttribute('position', '-1000 0 0');
+      Aaudio.play();
+      document.querySelector('a-image.ant3').setAttribute('visible', 'true');
+      i++;
+        Acounter ++;
+    if (Acounter == totalAs) {pano.setAttribute('src', '')};  //  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
+      });
+    };
 
+    if ( i < totalAs)  {
+      document.querySelector('a-image.letterA4').addEventListener('click', function() {
+          this.setAttribute('visible', 'false');
+          this.setAttribute('position', '-1000 0 0');
+          Aaudio.play();
+          document.querySelector('a-image.ant4').setAttribute('visible', 'true');
+          i++;
+          Acounter ++;
+        if (Acounter == totalAs) {pano.setAttribute('src', '')};  //  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
+          });
+        };
 
-
-    //  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
-});
-};
-
+        if ( i < totalAs)  {
+          document.querySelector('a-image.letterA5').addEventListener('click', function() {
+              this.setAttribute('visible', 'false');
+              this.setAttribute('position', '-1000 0 0');
+              Aaudio.play();
+              document.querySelector('a-image.ant5').setAttribute('visible', 'true');
+              i++;
+              Acounter ++;
+              if (Acounter == totalAs) {pano.setAttribute('src', '')};//  if (Acounter == totalAs) {pano.setAttribute('src', 'merrychristmas.jpg')};
+              });
+            };
 
 
 
