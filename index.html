@@ -22,22 +22,22 @@
       <a-sky id="pano" src="room.jpg" radius="50" color="#fff" rotation="0 -45 0"></a-sky>
 
       <a-entity position = "-15 0 -25" rotation=" 0 60 0">
-        <a-image class="letterA0 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5" > </a-image>
+        <a-image class="letterA0 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"   > </a-image>
         <a-image class="ant0" src="ant.png" position=" 0 0 0" width="10" height="10" rotation=" 2 0 -5"  visible="false" > </a-image>
       </a-entity>
 
       <a-entity position = "-20 -5 -5" rotation=" -20 90 0">
-        <a-image class="letterA1 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+        <a-image class="letterA1 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"   > </a-image>
         <a-image class="ant1" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
       </a-entity>
 
       <a-entity position = "20 2 -5" rotation=" 0 -90 0">
-        <a-image class="letterA2 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
-        <a-image class="ant2" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
+        <a-image class="letterA2 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5" > </a-image>
+        <a-image class="ant2" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false"> </a-image>
       </a-entity>
 
       <a-entity position = "0 20 -5" rotation=" 50 0 0">
-        <a-image class="letterA3 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5"  > </a-image>
+        <a-image class="letterA3 letter" position="0 0 0" src="letterA.png"  width="5" height="5" rotation=" 2 0 -5" > </a-image>
         <a-image class="ant3" src="ant.png" position=" 0 0 0" width="5" height="5" rotation=" 2 0 -5" visible="false" > </a-image>
       </a-entity>
 
@@ -120,7 +120,7 @@ if ( i < totalAs)  {
   document.querySelector('a-image.letterA2').addEventListener('click', function() {
       this.setAttribute('visible', 'false');
       this.setAttribute('position', '-1000 0 0');
-      Aaudio.play();
+       Aaudio.play();
       document.querySelector('a-image.ant2').setAttribute('visible', 'true');
       i++;
       Acounter ++;
@@ -155,7 +155,7 @@ if ( i < totalAs)  {
           document.querySelector('a-image.letterA5').addEventListener('click', function() {
               this.setAttribute('visible', 'false');
               this.setAttribute('position', '-1000 0 0');
-              Aaudio.play();
+             Aaudio.play();
               document.querySelector('a-image.ant5').setAttribute('visible', 'true');
               i++;
               Acounter ++;
